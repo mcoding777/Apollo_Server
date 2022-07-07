@@ -44,13 +44,22 @@ const typeDefs = gql`
     }
 
     type Query {
+        """
+        모든 트위터 글 가져오기
+        """
         allTweets: [Tweet!]!
         tweet(id: ID!): Tweet
         allUsers: [User!]!
     }
 
     type Mutation {
+        """
+        트위터 글 추가하기
+        """
         postTweet(userId: ID!, text: String!): Tweet!
+        """
+        트위터 글 지우기
+        """
         deleteTweet(id: ID!): Boolean!
     }
 `;
