@@ -13,7 +13,7 @@ const typeDefs = gql`
     }
 
     type Query {
-        allTweets: [Tweet]
+        allTweets: [Tweet!]!
         tweet(id: ID!): Tweet
     }
 
@@ -25,7 +25,7 @@ const typeDefs = gql`
 
 // Query : Restful API에서 url 역할 (어떤 데이터를 가져올래?)
 // Mutation : Restful API에서 HTTP Method 역할 (데이터를 어떻게 수정할래? POST / PUT / FATCH / DELETE)
-// 기본적으로 모든 타입은 Nullable 이다. Non-Nullable을 원한다면 ! 붙이기
+// 기본적으로 모든 데이터는 Nullable 이다. (id: ID! === id: ID | null) 만약에 Non-Nullable을 원한다면 타입 옆에 ! 붙이기
 
 const server = new  ApolloServer({typeDefs});
 
