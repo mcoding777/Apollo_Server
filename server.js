@@ -26,11 +26,17 @@ let users = [
 
 // 타입 정의
 const typeDefs = gql`
+    """
+    트위터 유저
+    """
     type User {
         id: ID!
         username: String!
     }
-    
+
+    """
+    트위터 글
+    """
     type Tweet {
         id: ID!
         text: String!
