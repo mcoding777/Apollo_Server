@@ -1,7 +1,5 @@
 # 프로젝트 소개
-
-노마드코더 GraphQL 영화 API 만들기   
-https://nomadcoders.co/graphql-for-beginners/lobby
+GraphQL 연습을 위한 Apollo Server 구축
 
 ## Dependencies
 - node v16.15.1
