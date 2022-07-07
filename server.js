@@ -4,20 +4,25 @@ let tweets = [
     {
         id: "1",
         text: '@하이',
+        userId: "2"
     },
     {
         id: "2",
         text: '@맛스타그램',
-    },
-    {
-        id: "3",
-        text: '@바리스타',
-    },
-    {
-        id: "4",
-        text: '@여행',
+        userId: "1"
     },
 ];
+
+let users = [
+    {
+        id: "1",
+        username: "mm"
+    },
+    {
+        id: "2",
+        username: "aa"
+    },
+]
 
 // 타입 정의
 const typeDefs = gql`
@@ -35,6 +40,7 @@ const typeDefs = gql`
     type Query {
         allTweets: [Tweet!]!
         tweet(id: ID!): Tweet
+        allUsers: [User!]!
     }
 
     type Mutation {
@@ -55,7 +61,10 @@ const resolvers = {
         },
         allTweets() {
             return tweets;
-        }
+        },
+        allUsers() {
+            return users;
+        },
     },
     Mutation: {
         postTweet(_, { userId, text }) {
@@ -71,6 +80,11 @@ const resolvers = {
             if (!tweet) return false;
             tweets = tweets.filter((tweet) => tweet.id !== id);
             return true;
+        }
+    },
+    Tweet: {
+        author({ userId }) {
+            return users.find((user) => user.id === userId);
         }
     }
 }
